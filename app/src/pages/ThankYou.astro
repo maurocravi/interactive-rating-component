@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Thank You">
+  <main class="min-h-screen flex items-center justify-center">
+
+
+
+        <div class="selection flex flex-col items-center  bg-[#1D232C] p-8 rounded-3xl max-w-sm space-y-5 mx-4">
+            
+            <div>
+                <img src="/illustration-thank-you.svg" alt="Thank you illustration" class="w-36" />
+            </div>
+            
+            
+            <h3 class="text-[#FC7614] bg-[#262E37] py-2 px-7 rounded-3xl">You selected <span id="rating"></span> out of 5</h3>
+
+            <h1 class="text-white text-3xl font-medium">Thank you!</h1>
+            <p class="text-center text-sm text-gray-400">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+
+
+        </div>
+    </main>
+
+
+
+
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const rating = params.get('rating');
+  const ratingElement = document.getElementById('rating');
+  if (rating && ratingElement) {
+    ratingElement.textContent = rating;
+  }
+</script>
+
+</Layout>

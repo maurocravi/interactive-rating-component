@@ -1,0 +1,11 @@
+<h1 id="result-text"></h1>
+
+<script>
+    // Obtiene el parámetro 'choice' de la URL
+    const params = new URLSearchParams(window.location.search);
+    const choice = params.get('choice');
+
+    // Muestra el texto basado en el parámetro
+    const resultText = choice ? `Has elegido ${choice}` : 'No se seleccionó ninguna opción';
+    document.getElementById('result-text').innerText = resultText;
+</script>

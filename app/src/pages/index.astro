@@ -1,0 +1,59 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+import IconStar from '../components/IconStar.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="Rate Us">
+<main class="min-h-screen flex items-center justify-center">
+	<div class="selection flex flex-col items-start bg-[#1D232C] p-8 rounded-3xl max-w-sm space-y-5 mx-4">
+		
+		<div>
+			<IconStar />
+		</div>
+		
+		
+
+		<h1 class="text-white text-3xl font-medium">How did we do?</h1>
+		<p class=" text-left text-sm text-gray-400">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+		
+		<div class=" flex w-full justify-between">
+			<button data-value="1" class="rating-btn text-gray-400 w-12 h-12 rounded-full bg-[#262E37] transition-all ease-in-out duration-300 hover:bg-white hover:text-black focus:bg-[#FC7614] focus:text-white flex items-center justify-center cursor-pointer">1</button>
+			<button data-value="2" class="rating-btn text-gray-400 w-12 h-12 rounded-full bg-[#262E37] transition-all ease-in-out duration-300 hover:bg-white hover:text-black focus:bg-[#FC7614] focus:text-white flex items-center justify-center cursor-pointer">2</button>
+			<button data-value="3" class="rating-btn text-gray-400 w-12 h-12 rounded-full bg-[#262E37] transition-all ease-in-out duration-300 hover:bg-white hover:text-black focus:bg-[#FC7614] focus:text-white flex items-center justify-center cursor-pointer">3</button>
+			<button data-value="4" class="rating-btn text-gray-400 w-12 h-12 rounded-full bg-[#262E37] transition-all ease-in-out duration-300 hover:bg-white hover:text-black focus:bg-[#FC7614] focus:text-white flex items-center justify-center cursor-pointer">4</button>
+			<button data-value="5" class="rating-btn text-gray-400 w-12 h-12 rounded-full bg-[#262E37] transition-all ease-in-out duration-300 hover:bg-white hover:text-black focus:bg-[#FC7614] focus:text-white flex items-center justify-center cursor-pointer">5</button>
+		</div>
+
+		<button id="submit-btn" disabled class="w-full py-2 rounded-3xl text-center bg-[#FC7614] transition-all ease-in-out duration-300 hover:bg-white text-black  cursor-pointer font-medium">SUBMIT</button>
+	</div>
+</main>
+
+
+
+
+<script>
+  let selectedRating = 0;
+  const ratingButtons = document.querySelectorAll('.rating-btn');
+  const submitButton = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  if (submitButton) {
+    ratingButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        selectedRating = parseInt((button as HTMLButtonElement).dataset.value || '0', 10);
+        submitButton.disabled = false;
+      });
+    });
+
+    submitButton.addEventListener('click', () => {
+      if (selectedRating > 0) {
+        window.location.href = `/ThankYou?rating=${selectedRating}`;
+      }
+    });
+  }
+</script>
+
+</Layout>
